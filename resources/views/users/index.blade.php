@@ -50,8 +50,9 @@
                 </tbody>
             </table>
         </div>
-
     </div>
+
+    <a href="/users/create" class="btn btn-dark">Cadastrar Usuário</a>
 
 
 @stop

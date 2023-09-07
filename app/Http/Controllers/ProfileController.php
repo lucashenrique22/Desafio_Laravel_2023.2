@@ -17,11 +17,22 @@ class ProfileController extends Controller
      * Display the user's profile form.
      */
 
-    public function index()
+    public function index(): View
     {
         $users = User::query()->orderBy('id')->get();
 
         return view('users.index')->with('users',$users);
+    }
+
+    public function create()
+    {
+        return view('users.create');
+    }
+
+    public function store(Request $request)
+    {
+        User::create($request->all());
+        return redirect('/users');
     }
 
     public function edit(Request $request): View
