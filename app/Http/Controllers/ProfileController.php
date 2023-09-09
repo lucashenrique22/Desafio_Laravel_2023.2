@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
@@ -17,11 +18,12 @@ class ProfileController extends Controller
      * Display the user's profile form.
      */
 
-    public function index(): View
+    public function index(Request $request): View
     {
         $users = User::query()->orderBy('id')->get();
+        $mensagemSucesso = session('mensagem.sucesso');
 
-        return view('users.index')->with('users',$users);
+        return view('users.index')->with('users',$users)->with('mensagemSucesso', $mensagemSucesso);
     }
 
     public function create()
@@ -31,8 +33,9 @@ class ProfileController extends Controller
 
     public function store(Request $request)
     {
-        User::create($request->all());
-        return redirect('/users');
+        $user = User::create($request->all());
+
+        return to_route('users.index')->with('mensagem.sucesso', "Usuário '{$user->name}' criado com sucesso");
     }
 
     public function edit(Request $request): View
@@ -61,21 +64,10 @@ class ProfileController extends Controller
     /**
      * Delete the user's account.
      */
-    public function destroy(Request $request): RedirectResponse
+    public function destroy(User $user): RedirectResponse
     {
-        $request->validateWithBag('userDeletion', [
-            'password' => ['required', 'current_password'],
-        ]);
-
-        $user = $request->user();
-
-        Auth::logout();
-
         $user->delete();
 
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return Redirect::to('/');
+        return to_route('users.index')->with('mensagem.sucesso', "Usuário '{$user->name}' deletado com sucesso");
     }
 }

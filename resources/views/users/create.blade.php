@@ -8,7 +8,7 @@
 @stop
 
 @section('content')
-    <form action="/users/store" method="post">
+    <form action="{{ route('users.store') }}" method="post">
         @csrf
         <div class="form-row">
             <div class="form-group col-md-6">

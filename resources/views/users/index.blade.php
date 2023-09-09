@@ -8,24 +8,16 @@
 
 @section('content')
 
+    @isset($mensagemSucesso)
+        <div class="alert alert-success">
+            {{$mensagemSucesso}}
+        </div>
+    @endisset
+
     <div class="card">
             <div class="card-header">
                 <div style="align-items: center" class="row">
                     <h3 class="card-title">Tabela de Usuários</h3>
-                    <div style="display: flex; justify-content: flex-end; align-items: center" class="col-sm">
-                        <div class="card-tools">
-                            <div class="input-group input-group-sm" style="width: 150px;">
-                                <form class="d-flex" action="/users/search" method="GET">
-                                    <input type="text" name="search" class="form-control float-right" placeholder="Procurar">
-                                    <div class="input-group-append">
-                                        <button style="margin-left: 10px" type="submit" class="btn btn-primary">
-                                            <i class="fas fa-search"></i>
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         <div class="card-body table-responsive p-0">
@@ -44,6 +36,15 @@
                         <td>{{$user->name}}</td>
                           <td>{{$user->email}}</td>
                           <td>{{$user->birth_date}}</td>
+
+                          <td>
+                              <form action="{{ route('users.destroy', $user->id) }}" method="post">
+                                  @csrf
+                                  @method('DELETE')
+                                <button class="btn btn-danger btn-sm">X</button>
+                              </form>
+                          </td>
+
                       </tr>
                     @endforeach
 
@@ -52,7 +53,7 @@
         </div>
     </div>
 
-    <a href="/users/create" class="btn btn-dark">Cadastrar Usuário</a>
+    <a href="{{ route('users.create') }}" class="btn btn-dark">Cadastrar Usuário</a>
 
 
 @stop
