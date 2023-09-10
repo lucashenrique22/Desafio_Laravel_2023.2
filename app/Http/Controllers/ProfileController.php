@@ -33,6 +33,15 @@ class ProfileController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate(
+            [
+                'nome' => 'required|unique',
+                'email' => 'required|unique',
+                'senha' => 'required',
+                'data de nascimento' => 'required',
+                'telefone' => 'required|unique'
+            ]
+         );
         $user = User::create($request->all());
 
         return to_route('users.index')->with('mensagem.sucesso', "Usuário '{$user->name}' criado com sucesso");

@@ -1,25 +1,13 @@
-
 @extends('adminlte::page')
 
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Formulário de Cadastro</h1>
+    <h1>Editar usuário</h1>
 @stop
 
 @section('content')
-
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
-    <form action="{{ route('users.store') }}" method="post">
+    <form action="{{ route('users.update', $user->id) }}" method="post">
         @csrf
         <div class="form-row">
             <div class="form-group col-md-6">
