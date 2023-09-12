@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Address;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -24,7 +25,8 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'birth_date' => fake()->date(),
             'phone_number' => fake()->phoneNumber(),
-            'password' => Hash::make('password'), // password
+            'address_id' => Address::factory()->create()->id,
+            'password' => Hash::make('password'),
             'remember_token' => Str::random(10),
             'isAdmin' => true
         ];
