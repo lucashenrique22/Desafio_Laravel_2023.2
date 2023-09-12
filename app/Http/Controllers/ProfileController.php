@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Http\Requests\UserFormRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -31,17 +32,8 @@ class ProfileController extends Controller
         return view('users.create');
     }
 
-    public function store(Request $request)
+    public function store(UserFormRequest $request)
     {
-        $request->validate(
-            [
-                'nome' => 'required|unique',
-                'email' => 'required|unique',
-                'senha' => 'required',
-                'data de nascimento' => 'required',
-                'telefone' => 'required|unique'
-            ]
-         );
         $user = User::create($request->all());
 
         return to_route('users.index')->with('mensagem.sucesso', "Usuário '{$user->name}' criado com sucesso");

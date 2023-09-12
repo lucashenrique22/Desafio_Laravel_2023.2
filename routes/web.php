@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
 
 //user routes
 Route::resource('/users', ProfileController::class)
-->only(['index', 'create', 'store', 'destroy' ,'edit']);
+->only(['index', 'create', 'store', 'destroy']);
 
 
 require __DIR__.'/auth.php';
