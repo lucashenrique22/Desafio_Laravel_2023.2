@@ -35,6 +35,10 @@
                 <input name="password" type="password" class="form-control" id="password" placeholder="Senha">
             </div>
         </div>
+{{--        <div class="form-group">--}}
+{{--            <label for="address_id">Endereço</label>--}}
+{{--            <input name="address_id" type="text" class="form-control" id="address_id">--}}
+{{--        </div>--}}
         <div class="form-group">
             <label for="birth_date">Data de nascimento</label>
             <input name="birth_date" type="date" class="form-control" id="birth_date">

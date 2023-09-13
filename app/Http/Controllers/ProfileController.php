@@ -21,7 +21,7 @@ class ProfileController extends Controller
 
     public function index(Request $request): View
     {
-        $users = User::query()->orderBy('id')->get();
+        $users = User::all();
         $mensagemSucesso = session('mensagem.sucesso');
 
         return view('users.index')->with('users',$users)->with('mensagemSucesso', $mensagemSucesso);
@@ -34,6 +34,7 @@ class ProfileController extends Controller
 
     public function store(UserFormRequest $request)
     {
+//        dd($request->all());
         $user = User::create($request->all());
 
         return to_route('users.index')->with('mensagem.sucesso', "Usuário '{$user->name}' criado com sucesso");

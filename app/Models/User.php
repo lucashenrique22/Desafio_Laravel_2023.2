@@ -3,11 +3,14 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use function PHPUnit\TestFixture\func;
 
 class User extends Authenticatable
 {
@@ -24,6 +27,7 @@ class User extends Authenticatable
         'password',
         'birth_date',
         'phone_number',
+        'address_id',
         'work_time',
         'isAdmin',
     ];
@@ -57,7 +61,18 @@ class User extends Authenticatable
         return $this->hasMany(Treatment::class);
     }
 
+    public function address(): HasOne
+    {
+        return $this->hasOne(Address::class);
+    }
 
+    protected static function booted()
+    {
+     self::addGlobalScope('ordered', function(Builder $queryBuilder)
+     {
+         $queryBuilder->orderBy('id');
+     });
+    }
 
 
 }
