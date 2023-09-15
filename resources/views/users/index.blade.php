@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <h1>Controle de usuários do sistema</h1>
+    <h1>Controle de usuários</h1>
 @stop
 
 @section('content')
@@ -14,6 +14,7 @@
         </div>
     @endisset
 
+    <a href="{{ route('users.create') }}" class="btn btn-dark mb-2">Cadastrar Usuário</a>
     <div class="card">
             <div class="card-header">
                 <div style="align-items: center" class="row">
