@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Requests\ProfileUpdateRequest;
 use App\Http\Requests\UserFormRequest;
+use App\Models\Address;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 
@@ -34,8 +36,21 @@ class ProfileController extends Controller
 
     public function store(UserFormRequest $request)
     {
-//        dd($request->all());
-        $user = User::create($request->all());
+ //        dd($request->all());
+
+        $address = Address::create($request->all());
+
+        $user = User::create(
+            [
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' =>Hash::make($request->password),
+                'birth_date' => $request->birth_date,
+                'phone_number' => $request->phone_number,
+                'work_time' => $request->work_time,
+                'address_id' => $address->id,
+            ]
+        );
 
         return to_route('users.index')->with('mensagem.sucesso', "Usuário '{$user->name}' criado com sucesso");
     }
