@@ -28,7 +28,7 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="email">Email</label>
-                <input name="email" type="email" class="form-control" id="email" placeholder="Informe o e email">
+                <input name="email" type="email" class="form-control" id="email" placeholder="Informe o email">
             </div>
             <div class="form-group col-md-6">
                 <label for="password">Senha</label>
@@ -36,11 +36,11 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="rua">Rua:</label>
+            <label for="street">Rua:</label>
             <input name="street" type="text" class="form-control" id="street" placeholder="Informe a rua">
         </div>
         <div class="form-group">
-            <label for="bairro">Bairro:</label>
+            <label for="neighborhood">Bairro:</label>
             <input name="neighborhood" type="text" class="form-control" id="neighborhood" placeholder="Informe o bairro">
         </div>
         <div class="form-group">

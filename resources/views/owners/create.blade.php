@@ -19,7 +19,7 @@
         </div>
     @endif
 
-    <form action="{{ route('users.store') }}" method="post">
+    <form action="{{ route('owners.store') }}" method="post">
         @csrf
         <div class="form-row">
             <div class="form-group col-md-6">
@@ -32,15 +32,20 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="email">Email</label>
-                <input name="email" type="email" class="form-control" id="email" placeholder="Informe o e email">
+                <input name="email" type="email" class="form-control" id="email" placeholder="Informe o email">
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="cpf">CPF</label>
+                <input name="cpf" type="number" class="form-control" id="cpf" placeholder="Informe o CPF">
             </div>
         </div>
         <div class="form-group">
-            <label for="rua">Rua:</label>
+            <label for="street">Rua:</label>
             <input name="street" type="text" class="form-control" id="street" placeholder="Informe a rua">
         </div>
         <div class="form-group">
-            <label for="bairro">Bairro:</label>
+            <label for="neighborhood">Bairro:</label>
             <input name="neighborhood" type="text" class="form-control" id="neighborhood" placeholder="Informe o bairro">
         </div>
         <div class="form-group">

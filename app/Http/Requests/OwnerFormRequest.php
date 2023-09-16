@@ -11,7 +11,7 @@ class OwnerFormRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class OwnerFormRequest extends FormRequest
         return [
             'name' => 'required|min:3',
             'email' => 'required|email',
-            'profile_picture' => 'nullable' ,
+            'cpf' =>  'required',
+            'profile_picture' => 'nullable',
             'birth_date' => 'required',
             'phone_number' => 'required',
         ];

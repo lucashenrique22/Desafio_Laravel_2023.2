@@ -28,6 +28,7 @@
                     <th>Nome</th>
                     <th>E-mail</th>
                     <th>Data de nascimento</th>
+                    <th>Telefone</th>
 
                 </tr>
                 </thead>
@@ -37,12 +38,15 @@
                         <td>{{$user->name}}</td>
                           <td>{{$user->email}}</td>
                           <td>{{$user->birth_date}}</td>
+                          <td>{{$user->phone_number}}</td>
 
                           <td>
                               <form action="{{ route('users.destroy', $user->id) }}" method="post">
                                   @csrf
                                   @method('DELETE')
-                                <button class="btn btn-danger btn-sm">X</button>
+                                <button class="btn btn-danger btn-sm">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
                               </form>
                           </td>
 
@@ -54,8 +58,6 @@
         </div>
     </div>
 
-    <a href="{{ route('users.create') }}" class="btn btn-dark">Cadastrar Usuário</a>
-
 
 @stop
 
@@ -65,4 +67,5 @@
 
 @section('js')
     <script> console.log('Hi!'); </script>
+    <script src="https://kit.fontawesome.com/31a11ca086.js" crossorigin="anonymous"></script>
 @stop
