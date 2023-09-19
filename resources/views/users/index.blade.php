@@ -41,13 +41,20 @@
                           <td>{{$user->phone_number}}</td>
 
                           <td>
-                              <form action="{{ route('users.destroy', $user->id) }}" method="post">
-                                  @csrf
-                                  @method('DELETE')
-                                <button class="btn btn-danger btn-sm">
-                                    <i class="fa-solid fa-trash"></i>
-                                </button>
-                              </form>
+                             <span class="d-flex">
+
+                                 <a href="{{ route('users.show', $user->id)}}" class="btn btn-primary btn-sm">
+                                     <i class="fa-solid fa-user"></i>
+                                 </a>
+
+                                  <form action="{{ route('users.destroy', $user->id) }}" method="post" class="ml-2">
+                                      @csrf
+                                      @method('DELETE')
+                                    <button class="btn btn-danger btn-sm">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                  </form>
+                             </span>
                           </td>
 
                       </tr>

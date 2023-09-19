@@ -55,6 +55,11 @@ class ProfileController extends Controller
         return to_route('users.index')->with('mensagem.sucesso', "Usuário '{$user->name}' criado com sucesso");
     }
 
+    public function show(User $user)
+    {
+        return view('users.show', compact('user'));
+    }
+
     public function edit(Request $request): View
     {
         return view('profile.edit', [
