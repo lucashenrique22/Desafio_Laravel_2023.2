@@ -9,20 +9,24 @@
     <div class="form-row">
         <div class="form-group col-md-6">
             <label for="name">Nome completo</label>
-            <input disabled name="name" type="text" class="form-control" id="name" required value="{{ old('name', $user->name) }}">
+            <input disabled name="name" type="text" class="form-control" id="name"
+                   required value="{{ old('name', $user->name) }}">
         </div>
         <div class="form-group col-md-6">
             <label for="email">Email</label>
-            <input disabled name="email" type="email" class="form-control" id="email" required value="{{ old('email', $user->email) }}" >
+            <input disabled name="email" type="email" class="form-control" id="email"
+                   required value="{{ old('email', $user->email) }}" >
         </div>
         <div class="form-group col-md-6">
             <label for="password">Senha</label>
-            <input disabled name="password" type="password" class="form-control" id="password" required value="{{ old('password', $user->password) }}">
+            <input disabled name="password" type="password" class="form-control" id="password"
+                   required value="{{ old('password', $user->password) }}">
         </div>
     </div>
     <div class="form-group">
         <label for="street">Rua:</label>
-        <input disabled name="street" type="text" class="form-control" id="street">
+        <input disabled name="street" type="text" class="form-control" id="street"
+               required value="{{ old('street', $user->address->street) }}">
     </div>
     <div class="form-group">
         <label for="neighborhood">Bairro:</label>

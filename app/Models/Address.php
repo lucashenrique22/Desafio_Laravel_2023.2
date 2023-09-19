@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Address extends Model
 {
@@ -18,14 +19,14 @@ class Address extends Model
         'number',
     ];
 
-    public function owner(): BelongsTo
+    public function owner(): HasOne
     {
-        return $this->belongsTo(Owner::class);
+        return $this->hasOne(Owner::class);
     }
 
-    public function user(): BelongsTo
+    public function user(): HasOne
     {
-        return $this->belongsTo(User::class);
+        return $this->hasOne(User::class);
     }
 
 }
