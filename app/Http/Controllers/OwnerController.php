@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\OwnerFormRequest;
 use App\Models\Address;
 use App\Models\Owner;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -22,6 +23,12 @@ class OwnerController extends Controller
     public function create()
     {
         return view('owners.create');
+    }
+
+    public function show(Owner $owner): View
+    {
+        $owner->load('address');
+        return view('owners.show', compact('owner'));
     }
 
     public function store(OwnerFormRequest $request)
@@ -42,7 +49,7 @@ class OwnerController extends Controller
         return to_route('owners.index')->with('mensagem.sucesso', "Proprietário '{$owner->name}' cadastrado com sucesso");
     }
 
-    public function destroy(Owner $owner)
+    public function destroy(Owner $owner): RedirectResponse
     {
         $owner->delete();
 

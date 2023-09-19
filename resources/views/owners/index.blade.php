@@ -27,8 +27,6 @@
                 <tr>
                     <th>Nome</th>
                     <th>E-mail</th>
-                    <th>Data de nascimento</th>
-                    <th>Telefone</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -36,17 +34,22 @@
                     <tr>
                         <td>{{$owner->name}}</td>
                         <td>{{$owner->email}}</td>
-                        <td>{{$owner->birth_date}}</td>
-                        <td>{{$owner->phone_number}}</td>
 
                         <td>
-                            <form action="{{ route('owners.destroy', $owner->id) }}" method="post">
+                          <span class="d-flex">
+
+                              <a href="{{ route('owners.show', $owner->id) }}" class="btn btn-primary btn-sm">
+                                  <i class="fa-solid fa-user"></i>
+                              </a>
+
+                            <form action="{{ route('owners.destroy', $owner->id) }}" method="post" class="ml-2">
                                 @csrf
                                 @method('DELETE')
                                 <button class="btn btn-danger btn-sm">
                                     <i class="fa-solid fa-trash"></i>
                                 </button>
                             </form>
+                          </span>
                         </td>
 
                     </tr>

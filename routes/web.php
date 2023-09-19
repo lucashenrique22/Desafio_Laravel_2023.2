@@ -34,7 +34,7 @@ Route::resource('/users', ProfileController::class)
 
 //owner routes
 Route::resource('/owners', \App\Http\Controllers\OwnerController::class)
-    ->only(['index', 'create', 'store', 'destroy, show']);
+    ->only(['index', 'create', 'store', 'destroy', 'show']);
 
 
 require __DIR__.'/auth.php';

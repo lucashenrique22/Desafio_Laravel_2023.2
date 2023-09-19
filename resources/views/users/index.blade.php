@@ -27,9 +27,6 @@
                 <tr>
                     <th>Nome</th>
                     <th>E-mail</th>
-                    <th>Data de nascimento</th>
-                    <th>Telefone</th>
-
                 </tr>
                 </thead>
                 <tbody>
@@ -37,9 +34,6 @@
                       <tr>
                         <td>{{$user->name}}</td>
                           <td>{{$user->email}}</td>
-                          <td>{{$user->birth_date}}</td>
-                          <td>{{$user->phone_number}}</td>
-
                           <td>
                              <span class="d-flex">
 
