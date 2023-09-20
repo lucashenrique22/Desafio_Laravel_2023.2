@@ -10,12 +10,13 @@ class Treatment extends Model
 {
     use HasFactory;
 
-    protected $hidden = [];
+    protected $fillable =
+        [
+            'name',
+            'animal_id'
+        ];
 
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class);
-    }
+    protected $hidden = [];
 
     public function animal(): BelongsTo
     {

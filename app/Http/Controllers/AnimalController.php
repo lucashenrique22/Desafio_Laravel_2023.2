@@ -21,12 +21,13 @@ class AnimalController extends Controller
 
     public function create()
     {
-        return view('animals.create');
+        $owners = Owner::all();
+        return view('animals.create', compact('owners'));
     }
 
     public function store(AnimalFormRequest $request)
     {
-        $owner = Owner::create($request->all());
+        $owner = Owner::all();
         $treatments = Treatment::create($request->all());
 
         $animal = Animal::create(
