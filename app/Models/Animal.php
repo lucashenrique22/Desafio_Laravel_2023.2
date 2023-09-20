@@ -10,6 +10,16 @@ class Animal extends Model
 {
     use HasFactory;
 
+    protected $fillable =
+        [
+            'name',
+            'birth_date',
+            'species',
+            'breed',
+            'owner_id',
+            'treatments',
+        ];
+
     protected $hidden = [];
     public function owner()
     {

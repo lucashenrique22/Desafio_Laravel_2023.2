@@ -12,7 +12,7 @@ use Illuminate\View\View;
 
 class OwnerController extends Controller
 {
-    public function index(Request $request): View
+    public function index(): View
     {
         $owners = Owner::all();
         $mensagemSucesso = session('mensagem.sucesso');
