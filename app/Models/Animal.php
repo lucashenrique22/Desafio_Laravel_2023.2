@@ -17,7 +17,6 @@ class Animal extends Model
             'species',
             'breed',
             'owner_id',
-            'treatments',
         ];
 
     protected $hidden = [];

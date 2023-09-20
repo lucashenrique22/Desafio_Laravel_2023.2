@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AnimalFormRequest;
 use App\Models\Animal;
+use App\Models\Appointment;
 use App\Models\Owner;
 use App\Models\Treatment;
 use Illuminate\Http\Request;
@@ -13,10 +14,12 @@ class AnimalController extends Controller
 {
     public function index()
     {
+        $owners = Owner::all();
         $animals = Animal::all();
         $mensagemSucesso = session('mensagem.sucesso');
 
-        return view('animals.index')->with('animals', $animals)->with('mensagemSucesso', $mensagemSucesso);
+        return view('animals.index')->with('animals', $animals)->with('owners',$owners)
+            ->with('mensagemSucesso', $mensagemSucesso);
     }
 
     public function create()
@@ -27,20 +30,28 @@ class AnimalController extends Controller
 
     public function store(AnimalFormRequest $request)
     {
-        $owner = Owner::all();
-        $treatments = Treatment::create($request->all());
+        $data = $request->all();
+        Animal::create($data);
 
-        $animal = Animal::create(
-            [
-                'name' => $request->name,
-                'birth_date' => $request->birth_date,
-                'breed' => $request->breed,
-                'treatments' => $treatments->id,
-                'owner_id' => $owner->id,
-            ]
-        );
-
-        return to_route('animals.index')->with('mensagem.sucesso', "Animal '{{ $animal->name }}' cadastrado com sucesso");
+        return to_route('animals.index')->with('mensagem.sucesso', "Animal cadastrado com sucesso!");
 
     }
+
+    public function show(Animal $animal)
+    {
+        $owners = Owner::all();
+        $appointments = Appointment::where('animal_id', $animal->id)->get();
+        $appointmentsQty = $appointments->count();
+
+        return view('animals.show', compact('animal', 'appointmentsQty', 'appointments'),
+            compact('owners'));
+    }
+
+    public function destroy(Animal $animal)
+    {
+         $animal->delete();
+
+         return to_route('animals.index')->with('mensagem.sucesso', "Animal removido com sucesso!");
+    }
+
 }

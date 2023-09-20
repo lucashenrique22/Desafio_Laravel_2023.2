@@ -26,7 +26,6 @@ class AnimalFormRequest extends FormRequest
             'birth_date' => 'required',
             'species' => 'required',
             'breed' => 'required',
-            'treatments' =>'required',
             'owner_id' => 'required'
         ];
     }

@@ -40,5 +40,7 @@ Route::resource('/owners', \App\Http\Controllers\OwnerController::class)
 Route::resource('/animals', \App\Http\Controllers\AnimalController::class)
     ->only(['index', 'create', 'store', 'destroy', 'show']);
 
+Route::resource('/appointments', \App\Http\Controllers\AppointmentController::class)
+    ->only(['index', 'create', 'store', 'destroy', 'show']);
 
 require __DIR__.'/auth.php';

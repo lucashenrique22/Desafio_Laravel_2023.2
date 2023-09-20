@@ -44,11 +44,6 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="treatments">Tratamentos realizados</label>
-            <input name="treatments" type="text" class="form-control" id="treatments" placeholder="Informe o tratamento">
-        </div>
-
-        <div class="form-group">
             <label for="birth_date">Data de nascimento</label>
             <input name="birth_date" type="date" class="form-control" id="birth_date">
         </div>

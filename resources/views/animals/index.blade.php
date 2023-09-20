@@ -35,6 +35,7 @@
                         <tr>
                             <td>{{ $animal->name}}</td>
                             <td>{{ $animal->breed}}</td>
+                            <td>{{$animal->owner->name}}</td>
 
                             <td>
                               <span class="d-flex">
