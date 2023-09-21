@@ -36,8 +36,8 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="owner_id">Proprietário: </label>
-            <select name="owner_id" id="owner_id">
+            <label for="owner_id">Proprietário:</label>
+            <select class="form-control form-select form-select-sm" name="owner_id" id="owner_id">
                 @foreach($owners as $owner)
                     <option value="{{$owner->id}}">{{ $owner->name }} </option>
                 @endforeach
