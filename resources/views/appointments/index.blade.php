@@ -29,8 +29,8 @@
                 @foreach($appointments as $appointment)
                   <tr>
 
-                    <td> {{ $appointment->user_id}}</td>
-                      <td>{{ $appointment->animal_id }}</td>
+                    <td> {{ $appointment->user_id}} - {{ \App\Models\User::find($appointment->user_id)->name }}   </td>
+                      <td>{{ $appointment->animal_id }} - {{ \App\Models\Animal::find($appointment->animal_id)->name }} </td>
 
                       <td>
                          {{-- <span class="d-flex">

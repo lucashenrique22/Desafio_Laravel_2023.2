@@ -12,8 +12,7 @@ class Treatment extends Model
 
     protected $fillable =
         [
-            'name',
-            'animal_id'
+            'name'
         ];
 
     protected $hidden = [];

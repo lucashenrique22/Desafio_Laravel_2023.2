@@ -46,4 +46,5 @@
             <input disabled name="birth_date" type="date" class="form-control" id="birth_date"
                    required value="{{ old('birth_date', $animal->birth_date) }}">
         </div>
+
 @stop

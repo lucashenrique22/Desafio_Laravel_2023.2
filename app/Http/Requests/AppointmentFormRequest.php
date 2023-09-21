@@ -24,7 +24,6 @@ class AppointmentFormRequest extends FormRequest
         return [
             'user_id' => 'required',
             'animal_id' =>'required',
-            'treatment_id' => 'required',
             'start_date' => 'required',
             'end_time' => 'required',
             'cost' => 'required',

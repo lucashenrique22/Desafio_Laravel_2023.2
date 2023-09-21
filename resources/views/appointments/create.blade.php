@@ -41,8 +41,8 @@
                 </select>
             </div>
             <div class="form-group col-md-6">
-                <label for="treatment_id">Tratamento desejado</label>
-                <input name="treatment_id" type="text" class="form-control" id="treatment_id">
+                <label for="name">Tratamento desejado</label>
+                <input name="name" type="text" class="form-control" id="name">
             </div>
         </div>
         <div class="form-group">

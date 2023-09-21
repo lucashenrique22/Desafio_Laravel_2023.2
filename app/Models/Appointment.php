@@ -13,6 +13,16 @@ class Appointment extends Model
 
     protected $hidden = [];
 
+    protected $fillable = [
+        'name',
+        'user_id',
+        'animal_id',
+        'treatment_id',
+        'start_date',
+        'end_time',
+        'cost'
+    ];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

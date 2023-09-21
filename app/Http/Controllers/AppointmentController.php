@@ -7,7 +7,9 @@ use App\Models\Appointment;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Animal;
+use App\Models\Treatment;
 use App\Http\Requests\AppointmentFormRequest;
+use App\Http\Controllers\Auth;
 
 class AppointmentController extends Controller
 {
@@ -30,15 +32,24 @@ class AppointmentController extends Controller
 
         $appointment = new Appointment();
 
-        return view('appointments.create')->with('users', $users)
-        ->with('animals', $animals)->with('appointment', $appointment);
+        return view('appointments.create', compact('users', 'animals', 'appointment'));
     }
 
 
     public function store(AppointmentFormRequest $request)
     {
-        $data =$request->all();
-        Appointment::create($data);
+
+        // dd($request->all());
+        $treatments = Treatment::create($request->all());
+
+        Appointment::create([
+            'start_date' => $request->start_date,
+            'end_time' => $request->end_time,
+            'cost' => $request->cost,
+            'treatment_id' => $treatments->id,
+            'user_id' => $request->user_id,
+            'animal_id' => $request->animal_id
+        ]);
 
         return to_route('appointments.index')->with('mensagem.sucesso', "Consulta agendada com sucesso!");
     }
