@@ -330,6 +330,12 @@ return [
             'icon'        => 'fas fa-fw fa-clipboard-list',
         ],
 
+        [
+            'text'        => 'Envio de email',
+            'url'         => '/email/index',
+            'icon'        => 'fas fa-fw fa-envelope',
+        ],
+
         ['header' => 'account_settings'],
         [
             'text' => 'profile',

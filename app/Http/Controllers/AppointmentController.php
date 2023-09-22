@@ -19,9 +19,7 @@ class AppointmentController extends Controller
         $appointments = Appointment::all();
         $mensagemSucesso = session('mensagem.sucesso');
 
-
-        return view('appointments.index')->with('appointments', $appointments)
-            ->with('mensagemSucesso', $mensagemSucesso);
+        return view('appointments.index')->with('appointments', $appointments)->with('mensagemSucesso', $mensagemSucesso);
     }
 
 
@@ -58,8 +56,16 @@ class AppointmentController extends Controller
     {
         $users = User::all();
         $animals = Animal::all();
-//        $treatments = Treatment::all();
+
 
         return view('appointments.show', compact('users', 'animals', 'appointment'));
     }
+
+    public function destroy(Appointment $appointment)
+    {
+        $appointment->delete();
+
+        return to_route('appointments.index')->with('mensagem.sucesso', "Consulta removida com sucesso!");
+    }
+
 }

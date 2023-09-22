@@ -39,13 +39,13 @@
                                  <i class="fas fa-fw fa-clipboard-list"></i>
                              </a>
 
-{{--                              <form action="{{ route('users.destroy', $user->id) }}" method="post" class="ml-2">--}}
-{{--                                  @csrf--}}
-{{--                                  @method('DELETE')--}}
-{{--                                <button class="btn btn-danger btn-sm">--}}
-{{--                                    <i class="fa-solid fa-trash"></i>--}}
-{{--                                </button>--}}
-{{--                              </form>--}}
+                              <form action="{{ route('appointments.destroy', $appointment->id) }}" method="post" class="ml-2">
+                                  @csrf
+                                  @method('DELETE')
+                                <button class="btn btn-danger btn-sm">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                              </form>
                          </span>
                       </td>
 

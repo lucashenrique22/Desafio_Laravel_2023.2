@@ -43,4 +43,10 @@ Route::resource('/animals', \App\Http\Controllers\AnimalController::class)
 Route::resource('/appointments', \App\Http\Controllers\AppointmentController::class)
     ->only(['index', 'create', 'store', 'destroy', 'show']);
 
+//email
+
+Route::get('/email/index', [\App\Http\Controllers\EmailController::class, 'index']);
+Route::post('/email/send', [\App\Http\Controllers\EmailController::class, 'send']);
+
+
 require __DIR__.'/auth.php';

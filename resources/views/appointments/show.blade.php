@@ -25,7 +25,7 @@
         <div class="form-group col-md-6">
             <label for="name">Tratamento desejado</label>
             <input name="name" type="text" class="form-control" id="name" disabled required
-                   value="{{ old('name', $appointment->treatment_id) }}" >
+                   value="{{ old('name', \App\Models\Treatment::find($appointment->treatment_id)->name) }}" >
         </div>
     </div>
     <div class="form-group">
