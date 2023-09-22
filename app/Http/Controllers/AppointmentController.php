@@ -53,4 +53,13 @@ class AppointmentController extends Controller
 
         return to_route('appointments.index')->with('mensagem.sucesso', "Consulta agendada com sucesso!");
     }
+
+    public function show(Appointment $appointment)
+    {
+        $users = User::all();
+        $animals = Animal::all();
+//        $treatments = Treatment::all();
+
+        return view('appointments.show', compact('users', 'animals', 'appointment'));
+    }
 }

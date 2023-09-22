@@ -29,24 +29,24 @@
                 @foreach($appointments as $appointment)
                   <tr>
 
-                    <td> {{ $appointment->user_id}} - {{ \App\Models\User::find($appointment->user_id)->name }}   </td>
-                      <td>{{ $appointment->animal_id }} - {{ \App\Models\Animal::find($appointment->animal_id)->name }} </td>
+                    <td> {{ \App\Models\User::find($appointment->user_id)->name }}   </td>
+                      <td>{{ \App\Models\Animal::find($appointment->animal_id)->name }} </td>
 
                       <td>
-                         {{-- <span class="d-flex">
+                          <span class="d-flex">
 
-                             <a href="{{ route('users.show', $user->id)}}" class="btn btn-primary btn-sm">
-                                 <i class="fa-solid fa-user"></i>
+                             <a href="{{ route('appointments.show', $appointment->id)}}" class="btn btn-primary btn-sm">
+                                 <i class="fas fa-fw fa-clipboard-list"></i>
                              </a>
 
-                              <form action="{{ route('users.destroy', $user->id) }}" method="post" class="ml-2">
-                                  @csrf
-                                  @method('DELETE')
-                                <button class="btn btn-danger btn-sm">
-                                    <i class="fa-solid fa-trash"></i>
-                                </button>
-                              </form>
-                         </span> --}}
+{{--                              <form action="{{ route('users.destroy', $user->id) }}" method="post" class="ml-2">--}}
+{{--                                  @csrf--}}
+{{--                                  @method('DELETE')--}}
+{{--                                <button class="btn btn-danger btn-sm">--}}
+{{--                                    <i class="fa-solid fa-trash"></i>--}}
+{{--                                </button>--}}
+{{--                              </form>--}}
+                         </span>
                       </td>
 
                   </tr>
