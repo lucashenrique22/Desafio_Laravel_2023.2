@@ -336,6 +336,12 @@ return [
             'icon'        => 'fas fa-fw fa-envelope',
         ],
 
+        [
+            'text'        => 'Gerar Relatório',
+            'url'         => '/pdf/index',
+            'icon'        => 'fas fa-fw fa-envelope',
+        ],
+
         ['header' => 'account_settings'],
         [
             'text' => 'profile',

@@ -6,13 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Mail\SendEmailOwner;
 use App\Models\Owner;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 class EmailController extends Controller
 {
     public function index()
     {
-        return view('email.message');
+        $mensagemSucesso = session('mensagem.sucesso');
+
+        return view('email.message')->with('mensagemSucesso', $mensagemSucesso);
     }
 
     public function send(Request $request)
@@ -28,14 +31,12 @@ class EmailController extends Controller
                 $request->firstParagraph,
                 $request->secondParagraph,
                 $request->thanks,
-                $request->author,
+                Auth::user()->name,
             );
-            $time = now()->addSeconds($multiplier*5);
+            $time = now()->addSeconds($multiplier * 10);
             Mail::to($owner)->later($time, $email);
         }
 
-        $request->session()->flash('mensagemSucesso', 'Emails enviados com sucesso!');
-
-   return to_route('/emails/index');
+   return to_route('/email/index');
     }
 }
