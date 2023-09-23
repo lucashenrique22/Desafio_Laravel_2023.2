@@ -16,9 +16,17 @@ class SendEmailOwner extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+
+    public $header, $greetings, $firstParagraph, $secondParagraph, $thanks, $author;
+    public function __construct($header, $greetings, $firstParagraph, $secondParagraph, $thanks, $author)
     {
         //
+        $this->header = $header;
+        $this->greetings = $greetings;
+        $this->firstParagraph = $firstParagraph;
+        $this->secondParagraph = $secondParagraph;
+        $this->thanks = $thanks;
+        $this->author = $author;
     }
 
     /**
@@ -27,7 +35,7 @@ class SendEmailOwner extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Send Email Owner',
+            subject: 'Clinica Veterinária',
         );
     }
 
