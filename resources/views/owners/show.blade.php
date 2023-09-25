@@ -7,16 +7,18 @@
     <h1>Visualizar Proprietário</h1>
 
     <div class="form-row">
+
+        <div class="image text-center" >
+
+           <img src=" {{ asset('storage/img/' . $owner->profile_picture ) }}" class="image-thumbnail" height="auto" width="150px" alt="Foto de perfil">
+        </div>
+
         <div class="form-group col-md-6">
             <label for="name">Nome completo</label>
             <input disabled name="name" type="text" class="form-control" id="name"
                    required value="{{ old('name', $owner->name) }}">
         </div>
-        <div class="form-group col-md-6">
-            <label for="profile_picture">Foto de perfil</label>
-            <input disabled name="profile_picture" type="image" class="form-control" id="profile_picture"
-                   required value="{{ old('email', $owner->profile_picture) }}" >
-        </div>
+
         <div class="form-group col-md-6">
             <label for="email">Email</label>
             <input disabled name="email" type="email" class="form-control" id="email"

@@ -49,6 +49,13 @@ class AppointmentController extends Controller
             'animal_id' => $request->animal_id
         ]);
 
+        if($request->start_date >= $request->end_time)
+        {
+            return back()->with('mensagem.sucesso', 'Horário de início maior ou igual ao de término, digite um horário válido');
+        }
+
+
+
         return to_route('appointments.index')->with('mensagem.sucesso', "Consulta agendada com sucesso!");
     }
 
