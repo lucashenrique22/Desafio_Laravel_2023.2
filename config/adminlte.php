@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>Osvaldo</b>Clinic',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -303,11 +303,6 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'Dashboard',
-            'url'         => '/dashboard',
-            'icon'        => 'fas fa-fw fa-tachometer-alt',
-        ],
-        [
             'text'      => 'Usuários',
             'url'       => '/users',
             'icon'      => 'fas fa-fw fa-users',
@@ -338,8 +333,8 @@ return [
 
         [
             'text'        => 'Gerar Relatório',
-            'url'         => '/pdf/index',
-            'icon'        => 'fas fa-fw fa-envelope',
+            'url'         => '/pdf',
+            'icon'        => 'fas fa-fw fa-file-alt',
         ],
 
         ['header' => 'account_settings'],

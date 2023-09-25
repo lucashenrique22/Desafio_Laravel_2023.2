@@ -49,7 +49,7 @@ Route::get('/email/index', [\App\Http\Controllers\EmailController::class, 'index
 Route::post('/email/send', [\App\Http\Controllers\EmailController::class, 'send']);
 
 //pdf generator
-Route::get('pdf/index', [\App\Http\Controllers\PdfController::class, 'index']);
-Route::get('pdf/generate', [\App\Http\Controllers\PdfController::class, 'generate']);
+Route::get('pdf', [\App\Http\Controllers\PdfController::class, 'generate'])->name('pdf.index');
+
 
 require __DIR__.'/auth.php';
