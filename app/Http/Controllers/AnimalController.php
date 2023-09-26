@@ -33,7 +33,7 @@ class AnimalController extends Controller
         $data = $request->all();
         Animal::create($data);
 
-        return to_route('animals.index')->with('mensagem.sucesso', "Animal cadastrado com sucesso!");
+        return to_route('animals.index')->with('mensagem.sucesso', 'Animal cadastrado com sucesso!');
 
     }
 
@@ -51,7 +51,7 @@ class AnimalController extends Controller
     {
          $animal->delete();
 
-         return to_route('animals.index')->with('mensagem.sucesso', "Animal removido com sucesso!");
+         return to_route('animals.index')->with('mensagem.sucesso', 'Animal removido com sucesso!');
     }
 
 }

@@ -10,6 +10,7 @@ use App\Models\Animal;
 use App\Models\Treatment;
 use App\Http\Requests\AppointmentFormRequest;
 use App\Http\Controllers\Auth;
+use Tests\Laravel\App;
 
 class AppointmentController extends Controller
 {
@@ -38,6 +39,20 @@ class AppointmentController extends Controller
     {
 
         // dd($request->all());
+        $appointments = Appointment::all();
+        $request->start_date = str_replace('T', ' ', $request->start_date);
+        $request->end_time = str_replace('T', ' ', $request->end_time);
+
+        foreach($appointments as $appointment){
+
+            if($request->start_date >= $appointment->start_date && $request->start_date < $appointment->end_time){
+                return back()->with('mensagem.sucesso', 'Conflito de horário!');
+
+            }else if($request->start_date <= $appointment->start_date && $request->end_time > $appointment->start_date){
+                return back()->with('mensagem.sucesso', 'Conflito de horário!');
+            }
+        }
+
         $treatments = Treatment::create($request->all());
 
         Appointment::create([
@@ -49,14 +64,9 @@ class AppointmentController extends Controller
             'animal_id' => $request->animal_id
         ]);
 
-        if($request->start_date >= $request->end_time)
-        {
-            return back()->with('mensagem.sucesso', 'Horário de início maior ou igual ao de término, digite um horário válido');
-        }
 
 
-
-        return to_route('appointments.index')->with('mensagem.sucesso', "Consulta agendada com sucesso!");
+        return to_route('appointments.index')->with('mensagem.sucesso', 'Consulta agendada com sucesso!');
     }
 
     public function show(Appointment $appointment)
@@ -72,7 +82,7 @@ class AppointmentController extends Controller
     {
         $appointment->delete();
 
-        return to_route('appointments.index')->with('mensagem.sucesso', "Consulta removida com sucesso!");
+        return to_route('appointments.index')->with('mensagem.sucesso', 'Consulta removida com sucesso!');
     }
 
 }
