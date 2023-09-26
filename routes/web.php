@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
 
 //user routes
 Route::resource('/users', ProfileController::class)
-    ->only(['index', 'create', 'store', 'destroy', 'show']);
+    ->only(['index', 'create', 'store', 'destroy', 'show'])->can('isAdmin', '\App\Models\User');
 
 //owner routes
 Route::resource('/owners', \App\Http\Controllers\OwnerController::class)
@@ -45,8 +45,8 @@ Route::resource('/appointments', \App\Http\Controllers\AppointmentController::cl
 
 //email
 
-Route::get('/email/index', [\App\Http\Controllers\EmailController::class, 'index']);
-Route::post('/email/send', [\App\Http\Controllers\EmailController::class, 'send']);
+Route::get('/email/index', [\App\Http\Controllers\EmailController::class, 'index'])->can('isAdmin','\App\Models\User' );
+Route::post('/email/send', [\App\Http\Controllers\EmailController::class, 'send'])->can('isAdmin','\App\Models\User' );
 
 //pdf generator
 Route::get('pdf', [\App\Http\Controllers\PdfController::class, 'generate'])->name('pdf.index');

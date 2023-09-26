@@ -306,6 +306,7 @@ return [
             'text'      => 'Usuários',
             'url'       => '/users',
             'icon'      => 'fas fa-fw fa-users',
+            'can'       => 'isAdmin'
         ],
         [
             'text' => 'Proprietários',
@@ -329,6 +330,7 @@ return [
             'text'        => 'Envio de email',
             'url'         => '/email/index',
             'icon'        => 'fas fa-fw fa-envelope',
+            'can'         => 'isAdmin'
         ],
 
         [
