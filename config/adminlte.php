@@ -306,7 +306,6 @@ return [
             'text'      => 'Usuários',
             'url'       => '/users',
             'icon'      => 'fas fa-fw fa-users',
-            'can'       => 'isAdmin'
         ],
         [
             'text' => 'Proprietários',
