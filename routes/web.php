@@ -23,43 +23,32 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-
-    //user routes
+    //users routes
     Route::get('/users', [ProfileController::class, 'index'])->name('users.index')->can('isAdmin', '\App\Models\User');
+    Route::post('/users/create', [ProfileController::class, 'create'])->name('users.create')->can('isAdmin', '\App\Models\User');
     Route::post('/users/store', [ProfileController::class, 'store'])->name('users.create')->can('isAdmin', '\App\Models\User');
     Route::post('/users/delete/{id}', [ProfileController::class, 'destroy'])->name('users.destroy')->can('isAdmin', '\App\Models\User');
     Route::get('/users/show', [ProfileController::class, 'show'])->name('users.show');
 
-//owner routes
+    //owner routes
+
     Route::resource('/owners', \App\Http\Controllers\OwnerController::class)
         ->only(['index', 'create', 'store', 'destroy', 'show']);
 
-//animal routes
+    //animal routes
     Route::resource('/animals', \App\Http\Controllers\AnimalController::class)
         ->only(['index', 'create', 'store', 'destroy', 'show']);
+
+    //appointments routes
 
     Route::resource('/appointments', \App\Http\Controllers\AppointmentController::class)
         ->only(['index', 'create', 'store', 'destroy', 'show']);
 
-//    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-//user routes
-Route::resource('/users', ProfileController::class)
-    ->only(['index', 'create', 'store', 'destroy', 'show']);
-
-//owner routes
-Route::resource('/owners', \App\Http\Controllers\OwnerController::class)
-    ->only(['index', 'create', 'store', 'destroy', 'show']);
-
-//animal routes
-Route::resource('/animals', \App\Http\Controllers\AnimalController::class)
-    ->only(['index', 'create', 'store', 'destroy', 'show']);
-
-Route::resource('/appointments', \App\Http\Controllers\AppointmentController::class)
-    ->only(['index', 'create', 'store', 'destroy', 'show']);
 
 //email
 

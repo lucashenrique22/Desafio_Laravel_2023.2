@@ -50,7 +50,6 @@ class AnimalController extends Controller
     public function destroy(Animal $animal)
     {
          $animal->delete();
-
          return to_route('animals.index')->with('mensagem.sucesso', 'Animal removido com sucesso!');
     }
 
