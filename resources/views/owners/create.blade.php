@@ -19,7 +19,7 @@
         </div>
     @endif
 
-    <form action="{{ route('owners.store') }}" method="post">
+    <form action="{{ route('owners.store') }}" method="post" enctype="multipart/form-data>
         @csrf
         <div class="form-row">
             <div class="form-group col-md-6">

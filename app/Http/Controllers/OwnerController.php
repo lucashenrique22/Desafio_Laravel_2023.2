@@ -35,11 +35,19 @@ class OwnerController extends Controller
     {
         $address = Address::create($request->all());
 
+        if($request->hasFile('profile_picture')){
+            $file = $request->file('profile_picture');
+            $file->store('public/storage/img');
+            $profile = $file->hashName();
+        }else{
+            $profile = null;
+        }
+
         $owner = Owner::create(
             [
                 'name' => $request->name,
                 'email' => $request->email,
-                'profile_picture' => $request->profile_picture,
+                'profile_picture' => $profile,
                 'cpf' => $request->cpf,
                 'birth_date' => $request->birth_date,
                 'phone_number' => $request->phone_number,

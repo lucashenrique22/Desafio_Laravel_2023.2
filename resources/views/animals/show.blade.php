@@ -46,5 +46,15 @@
             <input disabled name="birth_date" type="date" class="form-control" id="birth_date"
                    required value="{{ old('birth_date', $animal->birth_date) }}">
         </div>
+        <div class="form-group col-md-6">
+            <label>Tratamentos Realizados:</label>
+            <input disabled name="appointment" type="text" class="form-control" id="appointment"
+            required value= @foreach ($appointments as $appointment)
+                @if ($animal->id === $appointment->animal_id)
+                    {{\App\Models\Treatment::find($appointment->treatment_id)->name }}
+                @endif
+           @endforeach>
+
+        </div>
 
 @stop

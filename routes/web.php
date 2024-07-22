@@ -31,7 +31,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/users/show', [ProfileController::class, 'show'])->name('users.show');
 
     //owner routes
-
     Route::resource('/owners', \App\Http\Controllers\OwnerController::class)
         ->only(['index', 'create', 'store', 'destroy', 'show']);
 
@@ -40,7 +39,6 @@ Route::middleware('auth')->group(function () {
         ->only(['index', 'create', 'store', 'destroy', 'show']);
 
     //appointments routes
-
     Route::resource('/appointments', \App\Http\Controllers\AppointmentController::class)
         ->only(['index', 'create', 'store', 'destroy', 'show']);
 
