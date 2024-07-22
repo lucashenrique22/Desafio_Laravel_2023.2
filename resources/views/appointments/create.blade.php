@@ -25,11 +25,9 @@
             <div class="form-group col-md-6">
                 <label for="user_id">Funcionário</label>
                 <select class="form-control form-select form-select-sm" name="user_id" id="user_id" required readonly>
-
                         <option value="{{Auth::user()->id}}">
                             {{ Auth::user()->id }} - {{ Auth::user()->name}}
                         </option>
-
                 </select>
             </div>
             <div class="form-group col-md-6">
@@ -42,7 +40,7 @@
             </div>
             <div class="form-group col-md-6">
                 <label for="name">Tratamento desejado</label>
-                <input name="name" type="text" class="form-control" id="name">
+                <input name="name" type="text" class="form-control" id="name" required>
             </div>
         </div>
         <div class="form-group">

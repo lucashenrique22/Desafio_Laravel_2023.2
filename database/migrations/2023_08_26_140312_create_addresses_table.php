@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('neighborhood');
             $table->string('state');
             $table->string('cep');
-            $table->integer('number');
+            $table->string('number');
             $table->timestamps();
         });
     }
